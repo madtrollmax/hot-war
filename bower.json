@@ -1,0 +1,22 @@
+{
+  "name": "hot-war",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "madtrollmax <subbotin.m.o@gmail.com>"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/js/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "d3": "~3.5.12"
+  }
+}
