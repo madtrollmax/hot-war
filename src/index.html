@@ -5,8 +5,34 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Index page</title>
+    <script type="text/javascript" src="js/components/d3/d3.js"></script>
+    <script type="text/javascript">
+  	(function  () {
+  		var tst=d3.select('body').selectAll('p');
+
+  		tst=tst.data([{x:1},{x:2},{x:1}], function(d){return d.x});
+  		
+
+
+
+
+
+  		tst.enter().append('p').text(function(d,i){return 'tst '+d.x });
+
+
+  		//d3.select('body').selectAll('p').data([{x:3},{x:1}], function(d){return d}).text(function(d,i){return 'tst new'+d});
+  		
+
+  		//tst.exit().text('Tst 2');
+
+  	})();
+  	</script>
+
   </head>
   <body>
-  	Test
+  	<svg width="200" height="220">
+	  <polygon points="1,85.6 51,1 149,1 199,85.6 149,172.2 51 172.2" style="fill:white;stroke:black; stroke-width:1" onclick="console.log('test')"/>
+	</svg>
+  	
   </body>
 </html>
