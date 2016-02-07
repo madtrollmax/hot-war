@@ -5,34 +5,107 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Index page</title>
-    <script type="text/javascript" src="js/components/d3/d3.js"></script>
-    <script type="text/javascript">
-  	(function  () {
-  		var tst=d3.select('body').selectAll('p');
 
-  		tst=tst.data([{x:1},{x:2},{x:1}], function(d){return d.x});
-  		
-
-
-
-
-
-  		tst.enter().append('p').text(function(d,i){return 'tst '+d.x });
-
-
-  		//d3.select('body').selectAll('p').data([{x:3},{x:1}], function(d){return d}).text(function(d,i){return 'tst new'+d});
-  		
-
-  		//tst.exit().text('Tst 2');
-
-  	})();
-  	</script>
 
   </head>
   <body>
-  	<svg width="200" height="220">
-	  <polygon points="1,85.6 51,1 149,1 199,85.6 149,172.2 51 172.2" style="fill:white;stroke:black; stroke-width:1" onclick="console.log('test')"/>
-	</svg>
+    <svg class="map"></svg>
+
+
+    <script type="text/javascript" src="js/components/d3/d3.js"></script>
+    <script type="text/javascript" src="js/map.js"></script>
+    <script type="text/javascript">
+    (function  () {
+      var map=[
+        {pos:{x:0, y:0}},
+        {pos:{x:1, y:0}},
+        {pos:{x:2, y:0}},
+        {pos:{x:3, y:0}},
+        {pos:{x:4, y:0}},
+        {pos:{x:5, y:0}},
+        {pos:{x:6, y:0}},
+        {pos:{x:7, y:0}},
+        {pos:{x:8, y:0}},
+        {pos:{x:9, y:0}},
+        {pos:{x:10, y:0}},
+        {pos:{x:11, y:0}},
+        {pos:{x:12, y:0}},
+        {pos:{x:13, y:0}},
+        {pos:{x:14, y:0}},
+        {pos:{x:0, y:1}},
+        {pos:{x:1, y:1}},
+        {pos:{x:2, y:1}},
+        {pos:{x:3, y:1}},
+        {pos:{x:4, y:1}},
+        {pos:{x:5, y:1}},
+        {pos:{x:6, y:1}},
+        {pos:{x:7, y:1}},
+        {pos:{x:8, y:1}},
+        {pos:{x:9, y:1}},
+        {pos:{x:10, y:1}},
+        {pos:{x:11, y:1}},
+        {pos:{x:12, y:1}},
+        {pos:{x:13, y:1}},
+        {pos:{x:14, y:1}},
+        {pos:{x:0, y:2}},
+        {pos:{x:1, y:2}},
+        {pos:{x:2, y:2}},
+        {pos:{x:3, y:2}},
+        {pos:{x:4, y:2}},
+        {pos:{x:5, y:2}},
+        {pos:{x:6, y:2}},
+        {pos:{x:7, y:2}},
+        {pos:{x:8, y:2}},
+        {pos:{x:9, y:2}},
+        {pos:{x:10, y:2}},
+        {pos:{x:11, y:2}},
+        {pos:{x:12, y:2}},
+        {pos:{x:13, y:2}},
+        {pos:{x:14, y:2}},
+        {pos:{x:0, y:3}},
+        {pos:{x:1, y:3}},
+        {pos:{x:2, y:3}},
+        {pos:{x:3, y:3}},
+        {pos:{x:4, y:3}},
+        {pos:{x:5, y:3}},
+        {pos:{x:6, y:3}},
+        {pos:{x:7, y:3}},
+        {pos:{x:8, y:3}},
+        {pos:{x:9, y:3}},
+        {pos:{x:10, y:3}},
+        {pos:{x:11, y:3}},
+        {pos:{x:12, y:3}},
+        {pos:{x:13, y:3}},
+        {pos:{x:14, y:3}},
+      ];
+
+      var mapper = new Mapper();
+      
+      mapper.calcMapPoints(map);
+      
+      var svg=d3.select('.map')
+        .attr('width', map.width)
+        .attr('height', map.height);
+
+      var polygon=svg.selectAll('polygon').data(map).enter().append('polygon');
+      
+      polygon.attr('points', function(d){
+        var res='';
+        d.points.forEach(function(point){
+          if(res.length>0) res+=' ';
+          res+=''+point.x+','+point.y;
+        });
+        return res;
+      });
+      
+      polygon.style('fill','white');
+      polygon.style('stroke','black');
+      polygon.style('stroke-width',1);
+
+    })();
+    </script>
+  	
+
   	
   </body>
 </html>
